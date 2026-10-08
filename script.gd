@@ -23,14 +23,11 @@ func maybe_idle():
 		speed = 0
 		if r == 0:
 			animated_sprite.play("BlueIdle")
-			print("idle")
 		elif r == 1:
 			animated_sprite.play("BlueJump")
-			print("jump")
 		elif r == 2:
 			animated_sprite.play("BluePush")
-			print("push")
-			
+
 
 func _on_area_input(_viewport, event, _shape_idx):	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -56,7 +53,7 @@ func _ready():
 func _physics_process(delta:float) -> void:
 	var window_position = Vector2(DisplayServer.window_get_position())
 	var screen_size = Vector2(DisplayServer.screen_get_size())
-
+		
 	if is_dragging:
 		var mouse_pos = Vector2(DisplayServer.mouse_get_position())
 		var new_win_pos = mouse_pos - drag_offset
@@ -64,6 +61,9 @@ func _physics_process(delta:float) -> void:
 		return
 		
 	if window_position.y < screen_size.y - window_size.y:
+		idle_timer = 0
+		is_idling = false
+		speed = 300
 		animated_sprite.play("BlueIdle")
 		window_position.y += speed*gravity_speed*delta
 		DisplayServer.window_set_position(Vector2i(window_position))
