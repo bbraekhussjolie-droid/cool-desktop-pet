@@ -1,6 +1,6 @@
 extends Node2D
 
-var gravity_speed = 1.3
+var gravity_speed = 4
 var speed = 300
 var direction = Vector2(1,0)
 var screen_size = Vector2()
@@ -33,8 +33,10 @@ func _on_area_input(_viewport, event, _shape_idx):
 			var mouse_pos = Vector2(DisplayServer.mouse_get_position())
 			var win_pos = Vector2(DisplayServer.window_get_position())
 			drag_offset = mouse_pos - win_pos
+			animated_sprite.play("BlueIdle")
 		else: 
 			is_dragging = false
+			animated_sprite.play("BlueWalkRight")
 
 func _ready():
 	animated_sprite.play("BlueWalkRight")
@@ -56,7 +58,11 @@ func _physics_process(delta:float) -> void:
 		return
 		
 	if window_position.y < screen_size.y - window_size.y:
-		print("above ground")
+		animated_sprite.play("BlueIdle")
+		window_position.y += speed*gravity_speed*delta
+		DisplayServer.window_set_position(Vector2i(window_position))
+		if window_position.y >= screen_size.y - window_size.y:
+			animated_sprite.play("BlueWalkRight")
 		return
 		
 	if is_idling:
