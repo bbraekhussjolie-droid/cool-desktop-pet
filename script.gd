@@ -19,11 +19,17 @@ func maybe_idle():
 	if randf() < 0.3:
 		is_idling = true
 		idle_timer = randf_range(1.0, 4.0)
-		var r = randi() % 1
+		var r = randi() % 3
+		speed = 0
 		if r == 0:
 			animated_sprite.play("BlueIdle")
-			speed = 0
-		#elif r = 1:
+			print("idle")
+		elif r == 1:
+			animated_sprite.play("BlueJump")
+			print("jump")
+		elif r == 2:
+			animated_sprite.play("BluePush")
+			print("push")
 			
 
 func _on_area_input(_viewport, event, _shape_idx):	

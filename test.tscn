@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bv4l2dc7or5ja" path="res://assets/bra-bill-sheet.png" id="3_vbegm"]
 [ext_resource type="Texture2D" uid="uid://b078cxpgpraub" path="res://assets/Dude_Monster_Idle_4.png" id="4_ehkex"]
 [ext_resource type="Texture2D" uid="uid://b5epakf1k3jfd" path="res://assets/Dude_Monster_Walk_6.png" id="5_xersf"]
+[ext_resource type="Texture2D" uid="uid://d1mie0r6qp43u" path="res://assets/Dude_Monster_Jump_8.png" id="6_g14j6"]
+[ext_resource type="Texture2D" uid="uid://ccaefwurenai8" path="res://assets/Dude_Monster_Push_6.png" id="6_vbegm"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_00tp4"]
 load_path = "res://.godot/imported/bill-spritesheet-2.png-21c93ec9fd9b285c82706b4379e6cada.ctex"
@@ -68,6 +70,62 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_15c7i"]
 atlas = ExtResource("4_ehkex")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbegm"]
+atlas = ExtResource("6_g14j6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehkex"]
+atlas = ExtResource("6_g14j6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xersf"]
+atlas = ExtResource("6_g14j6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00tp4"]
+atlas = ExtResource("6_g14j6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppv7d"]
+atlas = ExtResource("6_g14j6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naet1"]
+atlas = ExtResource("6_g14j6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qlrc"]
+atlas = ExtResource("6_g14j6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shobf"]
+atlas = ExtResource("6_g14j6")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb1cv"]
+atlas = ExtResource("6_vbegm")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h37t"]
+atlas = ExtResource("6_vbegm")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adp8l"]
+atlas = ExtResource("6_vbegm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvnpp"]
+atlas = ExtResource("6_vbegm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffwl0"]
+atlas = ExtResource("6_vbegm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg34o"]
+atlas = ExtResource("6_vbegm")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpeyw"]
 atlas = ExtResource("5_xersf")
@@ -162,6 +220,58 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vbegm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehkex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xersf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00tp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppv7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naet1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qlrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shobf")
+}],
+"loop": 1,
+"name": &"BlueJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb1cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h37t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adp8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvnpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffwl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg34o")
+}],
+"loop": 1,
+"name": &"BluePush",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xpeyw")
 }, {
 "duration": 1.0,
@@ -182,11 +292,6 @@ animations = [{
 "loop": 1,
 "name": &"BlueWalkRight",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": 1,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mucgc"]
@@ -199,8 +304,7 @@ script = ExtResource("1_ykrsh")
 position = Vector2(100, 80)
 scale = Vector2(7.5, 7.5)
 sprite_frames = SubResource("SpriteFrames_8s7q4")
-animation = &"new_animation"
-autoplay = "BlueIdle"
+animation = &"BluePush"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=356527464]
 position = Vector2(100, 100)
