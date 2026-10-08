@@ -1,5 +1,6 @@
 extends Node2D
 
+var gravity_speed = 1.3
 var speed = 300
 var direction = Vector2(1,0)
 var screen_size = Vector2()
@@ -17,11 +18,13 @@ var drag_offset = Vector2()
 func maybe_idle():	
 	if randf() < 0.3:
 		is_idling = true
-		idle_timer = randf_range(1.0, 3.0)
-		var r = randi() % 3
+		idle_timer = randf_range(1.0, 4.0)
+		var r = randi() % 1
 		if r == 0:
 			animated_sprite.play("BlueIdle")
 			speed = 0
+		#elif r = 1:
+			
 
 func _on_area_input(_viewport, event, _shape_idx):	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -43,10 +46,17 @@ func _ready():
 	area.input_event.connect(_on_area_input)
 
 func _physics_process(delta:float) -> void:
+	var window_position = Vector2(DisplayServer.window_get_position())
+	var screen_size = Vector2(DisplayServer.screen_get_size())
+
 	if is_dragging:
 		var mouse_pos = Vector2(DisplayServer.mouse_get_position())
 		var new_win_pos = mouse_pos - drag_offset
 		DisplayServer.window_set_position(Vector2i(new_win_pos))
+		return
+		
+	if window_position.y < screen_size.y - window_size.y:
+		print("above ground")
 		return
 		
 	if is_idling:
@@ -56,9 +66,10 @@ func _physics_process(delta:float) -> void:
 			speed = 300
 			animated_sprite.play("BlueWalkRight")
 		return
-	var screen_size = Vector2(DisplayServer.screen_get_size())
+		
+	#var screen_size = Vector2(DisplayServer.screen_get_size())
 	#print(screen_size, "screen size")
-	var window_position = Vector2(DisplayServer.window_get_position())
+	#var window_position = Vector2(DisplayServer.window_get_position())
 	window_position += direction*speed*delta
 	print(window_position)
 	#print(screen_size, "screen size")
@@ -72,7 +83,5 @@ func _physics_process(delta:float) -> void:
 		animated_sprite.flip_h = !animated_sprite.flip_h
 		maybe_idle()
 		
-	if window_position.y <= 0 or window_position.y >= screen_size.y - window_size.y:
-		direction.y *= -1	
-		maybe_idle()
+
 		
